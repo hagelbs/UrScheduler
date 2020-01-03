@@ -25,29 +25,36 @@ class _JadwalState extends State<Jadwal> {
           ),
         ),
         body: Container(
-          child: ListView(
+        child: Stack(
+          children: <Widget>[
+            Container(
+            ),
+       Positioned(
+         top: 20,
+         left:100 ,
+         right: 100,
+         bottom: 100,
+         child:Ink(
+           decoration: const ShapeDecoration(
 
-              padding: EdgeInsets.zero,
-              children: <Widget>[
+             color: Colors.lightBlue,
+             shape: CircleBorder(),
+           ),
 
-                ListTile(
-                  title: Text("+",
-                    textAlign: TextAlign.center,
-
-                  ),
-                  onTap: () {
-                    Route route = MaterialPageRoute(builder: (context) => MyApp());
-                    Navigator.push(context, route);
-                  },
-                ),
-                SizedBox(height: 30),
-              ]
-
-          ),
+           child: IconButton(
+               icon: Icon(Icons.add),
+               color: Colors.red,
+               onPressed: (){
+                 Route route =MaterialPageRoute(builder: (context) => MyApp());
+                  Navigator.push(context, route);
+               }),
+         ),
+             )
+               ])
 
         ),
+         ),
+          );
 
-      ),
-    );
   }
 }

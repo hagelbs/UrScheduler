@@ -106,7 +106,8 @@ class _HomeState extends State<Home> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              TableCalendar(initialCalendarFormat: CalendarFormat.week,
+              TableCalendar(
+                initialCalendarFormat: CalendarFormat.week,
                 calendarStyle: CalendarStyle(
                     todayColor: Colors.orange,
                     selectedColor: Theme.of(context).primaryColor,
@@ -131,6 +132,9 @@ class _HomeState extends State<Home> {
                   selectedDayBuilder: (context, date, events) => Container(
                       margin: const EdgeInsets.all(4.0),
                       alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          borderRadius: BorderRadius.circular(10.0)),
                       child: Text(
                         date.day.toString(),
                         style: TextStyle(color: Colors.white),
@@ -147,9 +151,7 @@ class _HomeState extends State<Home> {
                       )),
                 ),
                 calendarController: _controller,
-
-              ),
-
+              )
             ],
           ),
         ),
