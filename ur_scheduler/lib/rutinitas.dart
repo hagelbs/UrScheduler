@@ -123,7 +123,7 @@ void _pilihrutinitas(String value){
                 });
               },
             ),
-            new Text("Rabu"),
+            new Text("Sabtu"),
             Checkbox(
               value: sabVal,
               onChanged: (bool value) {
