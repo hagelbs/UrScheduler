@@ -74,7 +74,6 @@ class _HomeState extends State {
                   _pilihtp(value);
                 }
             ),
-
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
