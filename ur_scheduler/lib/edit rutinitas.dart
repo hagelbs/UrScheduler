@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(new MaterialApp(
-      home: new Home(),)
+    home: new Home(),)
   );
 }
 
@@ -17,7 +17,7 @@ class _HomeState extends State {
     return new Scaffold(
       appBar: new AppBar(
         leading: new Icon(Icons.arrow_back, color: Colors.black,),
-          title: new Text('Edit Rutinitas', style: TextStyle(color: Colors.black),),
+        title: new Text('Edit Rutinitas', style: TextStyle(color: Colors.black),),
         backgroundColor: Colors.white,
       ),
 
@@ -26,12 +26,12 @@ class _HomeState extends State {
         child:  Column(
           children: <Widget>[
             TextField(
-                decoration: InputDecoration(
-                    hintText: "Nama ",
-                    border: OutlineInputBorder(
-                        borderRadius:  BorderRadius.circular(10.0)
-                    )
-                ),
+              decoration: InputDecoration(
+                  hintText: "Nama ",
+                  border: OutlineInputBorder(
+                      borderRadius:  BorderRadius.circular(10.0)
+                  )
+              ),
             ),
             ListTile(
               title:  Text('Rutinitas',),
@@ -48,12 +48,20 @@ class _HomeState extends State {
               leading: Icon(Icons.notifications_active),
               title: Text('Tambah Pengingat',),
             ),
+            new RadioListTile(
+              value: "Ya",
+              title: new Text("Ya"),
+              activeColor: Colors.blue,
+              subtitle: new Text("Nada Dering 1"),
+            ),
+            new RadioListTile(
+              value: "Tidak",
+              title: new Text("Tidak"),
+              activeColor: Colors.blue,
+            ),
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
-
-
-
