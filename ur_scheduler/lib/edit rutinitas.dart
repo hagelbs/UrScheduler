@@ -12,6 +12,13 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State {
+  String _tp="";
+
+  void _pilihtp(String value){
+    setState(() {
+      _tp=value;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -53,12 +60,21 @@ class _HomeState extends State {
               title: new Text("Ya"),
               activeColor: Colors.blue,
               subtitle: new Text("Nada Dering 1"),
+              groupValue: _tp,
+              onChanged: (String value){
+                _pilihtp(value);
+              }
             ),
             new RadioListTile(
-              value: "Tidak",
-              title: new Text("Tidak"),
-              activeColor: Colors.blue,
+                value: "Tidak",
+                title: new Text("Tidak"),
+                activeColor: Colors.blue,
+                groupValue: _tp,
+                onChanged: (String value){
+                  _pilihtp(value);
+                }
             ),
+
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
