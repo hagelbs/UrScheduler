@@ -1,40 +1,41 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:schedule/awal.dart';
+import 'dart:async';
+import 'login_view.dart';
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
+class LayarUtama extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _LayarUtamaState createState() => _LayarUtamaState() ;
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _LayarUtamaState extends State<LayarUtama> {
+
+  @override
+  void initState() {
+    super.initState();
+    startSplashScreen();
+  }
+  startSplashScreen() async {
+    var duration = const Duration(seconds: 2);
+    return Timer(duration, () {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) {
+        return LoginPage();
+      }),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    // TODO: implement build
     return Scaffold(
       backgroundColor: Colors.white,
-      body: new Container(
-        padding: EdgeInsets.all(10.0),
-        child: ListView(
-            children: <Widget>[
-              new GestureDetector(
-                  onTap: () {
-                    Route route = MaterialPageRoute(builder: (context) => Home());
-                    Navigator.push(context, route);
-                  },
-                  child: Image(image: AssetImage("images/1.jpeg"),)
-              )]
+      body: Center(
+        child: Image.asset(
+          "images/1.jpeg",
+          width: 400.0,
+          height: 200.0,
         ),
-
-
       ),
     );
-
-
-
   }
 }
