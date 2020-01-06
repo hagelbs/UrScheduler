@@ -1,94 +1,149 @@
-
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(new MaterialApp(
+    home: new Home(),)
+  );
+}
 
-class MyApp extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+
+  _HomeState createState() => new _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  String _hari="";
+
+
+void _pilihrutinitas(String value){
+  setState(() {
+    _hari=value;
+  });
+}
+  bool senVal = false;
+  bool selVal = false;
+  bool rabVal = false;
+  bool kamVal = false;
+  bool jumVal = false;
+  bool sabVal = false;
+  bool mingVal = false;
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-          appBar: AppBar(
-              backgroundColor: Colors.white,
-              leading: Icon(Icons.arrow_back, color: Colors.black),
-              title: Text("Rutinitas", style: TextStyle(color: Colors.black),)
-          ),
-          body: SafeArea(
-              child : Center(
-
-                child:RadioGroup(),
-
-              )
-          )
+    return new Scaffold(
+      appBar: new AppBar(
+        leading: new Icon(Icons.arrow_back, color: Colors.black,),
+        title: new Text('Rutinitas', style: TextStyle(color: Colors.black),),
+        backgroundColor: Colors.white,
       ),
+
+      body:  Container(
+        padding: EdgeInsets.all(10.0),
+        child:  Column(
+          children: <Widget>[
+            new RadioListTile(
+              value: "Setiap Hari",
+              title: new Text("Setiap Hari"),
+              activeColor: Colors.blue,
+              groupValue: _hari,
+              onChanged: (String value){
+                _pilihrutinitas(value);
+              }
+            ),
+            new RadioListTile(
+                value: "Hari Kerja",
+                title: new Text("Hari Kerja"),
+                activeColor: Colors.blue,
+                groupValue: _hari,
+                onChanged: (String value){
+                  _pilihrutinitas(value);
+                }
+            ),
+            new RadioListTile(
+                value: "Akhir Pekan",
+                title: new Text("Akhir Pekan"),
+                activeColor: Colors.blue,
+                groupValue: _hari,
+                onChanged: (String value){
+                  _pilihrutinitas(value);
+                }
+            ),
+            new RadioListTile(
+                value: "Atur Sendiri",
+                title: new Text("Atur Sendiri"),
+                activeColor: Colors.blue,
+                groupValue: _hari,
+                onChanged: (String value){
+                  _pilihrutinitas(value);
+                }
+            ),
+            new Text("Senin"),
+            Checkbox(
+              value: senVal,
+              onChanged: (bool value) {
+                setState(() {
+                  senVal = value;
+                });
+              },
+            ),
+            new Text("Selasa"),
+            Checkbox(
+              value: selVal,
+              onChanged: (bool value) {
+                setState(() {
+                  selVal = value;
+                });
+              },
+            ),
+            new Text("Rabu"),
+            Checkbox(
+              value: rabVal,
+              onChanged: (bool value) {
+                setState(() {
+                  rabVal = value;
+                });
+              },
+            ),
+            new Text("Kamis"),
+            Checkbox(
+              value: kamVal,
+              onChanged: (bool value) {
+                setState(() {
+                  kamVal = value;
+                });
+              },
+            ),
+            new Text("Jumat"),
+            Checkbox(
+              value: jumVal,
+              onChanged: (bool value) {
+                setState(() {
+                  jumVal = value;
+                });
+              },
+            ),
+            new Text("Rabu"),
+            Checkbox(
+              value: sabVal,
+              onChanged: (bool value) {
+                setState(() {
+                  sabVal = value;
+                });
+              },
+            ),
+            new Text("Minggu"),
+            Checkbox(
+              value: mingVal,
+              onChanged: (bool value) {
+                setState(() {
+                  mingVal = value;
+                });
+              },
+            ),
+          ],
+        ),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
-
-class RadioGroup extends StatefulWidget {
-  @override
-  RadioGroupWidget createState() => RadioGroupWidget();
-}
-
-class NumberList {
-  String number;
-  int index;
-  NumberList({this.number, this.index});
-
-}
-
-class RadioGroupWidget extends State {
-
-  // Default Radio Button Selected Item.
-  String radioItemHolder = 'Setiap Hari';
-
-  // Group Value for Radio Button.
-  int id = 1;
-
-  List<NumberList> nList = [
-    NumberList(
-      index: 1,
-      number: "Setiap Hari",
-    ),
-    NumberList(
-      index: 2,
-      number: "Hari Kerja",
-    ),
-    NumberList(
-      index: 3,
-      number: "Akhir Pekan",
-    ),
-    NumberList(
-      index: 4,
-      number: "Atur Sendiri",
-    ),
-  ];
-
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Expanded(
-            child: Container(
-              height: 350.0,
-              child: Column(
-                children:
-                nList.map((data) => RadioListTile(
-                  title: Text("${data.number}"),
-                  groupValue: id,
-                  value: data.index,
-                  onChanged: (val) {
-                    setState(() {
-                      radioItemHolder = data.number ;
-                      id = data.index;
-                    });
-                  },
-                )).toList(),
-
-              ),
-            )),
-
-      ],
-    );
-  }
-}
-
