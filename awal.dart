@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:schedule/acara.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'tambah_jadwal.dart';
-import 'rutinitas.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -59,7 +56,7 @@ class _HomeState extends State<Home> {
                 leading: Icon(Icons.schedule),
                 title: Text('Tambah Jadwal'),
                 onTap: () {
-                  Route route = MaterialPageRoute(builder: (context) => Tambah());
+                  Route route = MaterialPageRoute(builder: (context) => Jadwal());
                   Navigator.push(context, route);
                 },
               ),
@@ -67,8 +64,6 @@ class _HomeState extends State<Home> {
                 title: Text('Rutinitas'),
                 leading: Icon(Icons.timer),
                 onTap: () {
-                  Route route = MaterialPageRoute(builder: (context) => Jadwal());
-                  Navigator.push(context, route);
 
                 },
               ),
@@ -76,8 +71,6 @@ class _HomeState extends State<Home> {
                 leading: Icon(Icons.event),
                 title: Text('Acara'),
                 onTap: () {
-                  Route route = MaterialPageRoute(builder: (context) => Acara());
-                  Navigator.push(context, route);
 
                 },
 
