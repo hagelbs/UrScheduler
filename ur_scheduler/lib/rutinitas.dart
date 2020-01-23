@@ -1,149 +1,75 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(new MaterialApp(
-    home: new Home(),)
-  );
-}
+import 'awal.dart';
+import 'tambah_jadwal.dart';
 
-class Home extends StatefulWidget {
+class Jadwal extends StatefulWidget {
   @override
-
-  _HomeState createState() => new _HomeState();
+  _JadwalState createState() => _JadwalState();
 }
-
-class _HomeState extends State<Home> {
-  String _hari="";
-
-
-void _pilihrutinitas(String value){
-  setState(() {
-    _hari=value;
-  });
-}
-  bool senVal = false;
-  bool selVal = false;
-  bool rabVal = false;
-  bool kamVal = false;
-  bool jumVal = false;
-  bool sabVal = false;
-  bool mingVal = false;
-
+class _JadwalState extends State<Jadwal> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        leading: new Icon(Icons.arrow_back, color: Colors.black,),
-        title: new Text('Rutinitas', style: TextStyle(color: Colors.black),),
-        backgroundColor: Colors.white,
-      ),
+    return MaterialApp(
+        home: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.blueGrey,
+            leading: new IconButton(icon: new Icon(Icons.arrow_back, color: Colors.white), onPressed: (){
+              Route route = MaterialPageRoute(builder: (context) => Home());
+              Navigator.push(context, route);
+            }),
+            title: new Text("    Rutinitas ",
+              style: TextStyle(color: Colors.white) ,
 
-      body:  Container(
-        padding: EdgeInsets.all(10.0),
-        child:  Column(
-          children: <Widget>[
-            new RadioListTile(
-              value: "Setiap Hari",
-              title: new Text("Setiap Hari"),
-              activeColor: Colors.blue,
-              groupValue: _hari,
-              onChanged: (String value){
-                _pilihrutinitas(value);
-              }
             ),
-            new RadioListTile(
-                value: "Hari Kerja",
-                title: new Text("Hari Kerja"),
-                activeColor: Colors.blue,
-                groupValue: _hari,
-                onChanged: (String value){
-                  _pilihrutinitas(value);
-                }
-            ),
-            new RadioListTile(
-                value: "Akhir Pekan",
-                title: new Text("Akhir Pekan"),
-                activeColor: Colors.blue,
-                groupValue: _hari,
-                onChanged: (String value){
-                  _pilihrutinitas(value);
-                }
-            ),
-            new RadioListTile(
-                value: "Atur Sendiri",
-                title: new Text("Atur Sendiri"),
-                activeColor: Colors.blue,
-                groupValue: _hari,
-                onChanged: (String value){
-                  _pilihrutinitas(value);
-                }
-            ),
-            new Text("Senin"),
-            Checkbox(
-              value: senVal,
-              onChanged: (bool value) {
-                setState(() {
-                  senVal = value;
-                });
-              },
-            ),
-            new Text("Selasa"),
-            Checkbox(
-              value: selVal,
-              onChanged: (bool value) {
-                setState(() {
-                  selVal = value;
-                });
-              },
-            ),
-            new Text("Rabu"),
-            Checkbox(
-              value: rabVal,
-              onChanged: (bool value) {
-                setState(() {
-                  rabVal = value;
-                });
-              },
-            ),
-            new Text("Kamis"),
-            Checkbox(
-              value: kamVal,
-              onChanged: (bool value) {
-                setState(() {
-                  kamVal = value;
-                });
-              },
-            ),
-            new Text("Jumat"),
-            Checkbox(
-              value: jumVal,
-              onChanged: (bool value) {
-                setState(() {
-                  jumVal = value;
-                });
-              },
-            ),
-            new Text("Sabtu"),
-            Checkbox(
-              value: sabVal,
-              onChanged: (bool value) {
-                setState(() {
-                  sabVal = value;
-                });
-              },
-            ),
-            new Text("Minggu"),
-            Checkbox(
-              value: mingVal,
-              onChanged: (bool value) {
-                setState(() {
-                  mingVal = value;
-                });
-              },
-            ),
-          ],
+          ),
+          body: Card(
+
+            child: Column(
+                children: <Widget>[
+                new Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    new Column(
+                      children: <Widget>[
+                    Icon(Icons.edit, size: 30.0),
+                    ]),
+                    SizedBox(
+                      width: 200.0,
+                        child: Text('Ini Lokasi ngambil data yaaaaaaaaaaaaaaa',
+                            maxLines: 15,
+                            style: TextStyle(fontSize: 15.0),
+                      )
+                          ),
+                    new Column(
+                        children: <Widget>[
+                          Icon(Icons.delete, size: 30.0),
+                        ]),
+                  ],
+                ),
+
+                new Center (
+
+                      child: OutlineButton(
+
+                        onPressed: (){
+                          Route route =MaterialPageRoute(builder: (context) => Tambah());
+                          Navigator.push(context, route);
+                        },
+                        child: Icon(Icons.add,
+                          color: Colors.teal,
+                          size: 40.0,
+                        ),
+                        borderSide: BorderSide(color: Colors.lightBlueAccent),
+
+
+                      )
+                  ),
+                ]),
+          ),
         ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        );
+
   }
 }
